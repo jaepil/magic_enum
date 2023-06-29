@@ -5,7 +5,7 @@
 // | |  | | (_| | (_| | | (__  | |____| | | | |_| | | | | | | | |____|_|   |_|
 // |_|  |_|\__,_|\__, |_|\___| |______|_| |_|\__,_|_| |_| |_|  \_____|
 //                __/ | https://github.com/Neargye/magic_enum
-//               |___/  version 0.9.2
+//               |___/  version 0.9.3
 //
 // Licensed under the MIT License <http://opensource.org/licenses/MIT>.
 // SPDX-License-Identifier: MIT
@@ -162,7 +162,7 @@ class indexing {
 
   [[nodiscard]] static constexpr const E* end() noexcept { return indices.first.data() + indices.first.size(); }
 
-  [[nodiscard]] static constexpr const E* it(std::size_t i) noexcept { return &indices.first[i]; }
+  [[nodiscard]] static constexpr const E* it(std::size_t i) noexcept { return indices.first.data() + i; }
 
   [[nodiscard]] static constexpr optional<std::size_t> at(E val) noexcept {
     if (auto i = enum_index(val)) {
@@ -181,7 +181,7 @@ class indexing<E, Cmp, std::enable_if_t<std::is_enum_v<std::decay_t<E>> && (std:
 
    [[nodiscard]] static constexpr const E* end() noexcept { return values.data() + values.size(); }
 
-  [[nodiscard]] static constexpr const E* it(std::size_t i) noexcept { return &values[i]; }
+  [[nodiscard]] static constexpr const E* it(std::size_t i) noexcept { return values.data() + i; }
 
   [[nodiscard]] static constexpr optional<std::size_t> at(E val) noexcept { return enum_index(val); }
 };
