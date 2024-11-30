@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 
 project(
   magic_enum
-  VERSION "0.9.6"
+  VERSION "0.9.7"
   HOMEPAGE_URL "https://github.com/Neargye/magic_enum"
   DESCRIPTION
     "A library that provides static reflection for enums, work with any enum type without any macro or boilerplate code."
@@ -81,7 +81,7 @@ if(MAGIC_ENUM_OPT_INSTALL)
 
   install(
     DIRECTORY ${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}
-    DESTINATION include
+    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
     FILES_MATCHING
     PATTERN "${PROJECT_INCLUDE_HEADER_PATTERN}"
   )
